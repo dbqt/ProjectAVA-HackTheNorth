@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ObjectManipulation : MonoBehaviour {
 
     public float ZoomRate;
     public float DebugValue;
+    public GameObject[] AllModels;
 
 	// Use this for initialization
 	void Start () {
@@ -30,5 +32,13 @@ public class ObjectManipulation : MonoBehaviour {
 
     public void AdjustRotation(Vector3 direction) {
         //look at?
+    }
+
+    public void LoadModel(int modelIndex) {
+        if(this.gameObject.transform.childCount > 0){ 
+        Destroy(this.gameObject.transform.GetChild(0).gameObject);
+         }
+        GameObject o = Instantiate(AllModels[modelIndex]) as GameObject;
+        this.gameObject.transform.parent = o.transform;
     }
 }
