@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f91a5c5678a662b479cfdeeb87fb24ba
-timeCreated: 1474122754
+guid: 8ec424b0b66ae124a8b5552ff8582fe6
+timeCreated: 1474182611
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -141,7 +141,7 @@ ModelImporter:
     400130: mixamorig:Spine1
     400132: mixamorig:Spine2
     400134: //RootNode
-    7400000: talking_1
+    7400000: hip_hop_dancing
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -165,10 +165,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: talking_1
+      name: hip_hop_dancing
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 155
+      lastFrame: 359
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

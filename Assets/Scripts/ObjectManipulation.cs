@@ -8,6 +8,7 @@ public class ObjectManipulation : MonoBehaviour {
     public float RotationSpeed;
     public float DebugValue;
     public Animator MainAnimator;
+    public Animator AnaAnimator;
     public GameObject[] AllModels;
 
     private int modelIndex;
@@ -17,6 +18,7 @@ public class ObjectManipulation : MonoBehaviour {
 	void Start () {
 	   modelIndex = 0;
        isRotating = false;
+       LoadModel();
        //ChangeModel(0);
 	}
 	
@@ -55,19 +57,35 @@ public class ObjectManipulation : MonoBehaviour {
     }
 
     public void SetAnaAnimation(string trigger) {
-        switch (trigger.ToLower()) {
+        Debug.Log("set animation " + trigger);
+        switch (trigger) {
             case "greet":
+            Debug.Log("case greet");
+                AnaAnimator.SetTrigger("GreetTrigger");
                 break;
             case "talk":
+            Debug.Log("case talk");
+                AnaAnimator.SetTrigger("TalkTrigger");
                 break;
             case "idle":
+                //MainAnimator.SetTrigger("GreetTrigger");
                 break;
             case "search":
+            Debug.Log("case search");
+                AnaAnimator.SetTrigger("SearchTrigger");
                 break;
             case "dance":
+            Debug.Log("case dance");
+                //MainAnimator.SetTrigger("HideTrigger");
+                AnaAnimator.SetTrigger("DanceTrigger");
+                break;
+            case "no":
+            Debug.Log("case no");
+                AnaAnimator.SetTrigger("NoTrigger");
                 break;
 
             default:
+                //MainAnimator.SetTrigger("IdleTrigger");
                 break;
         }
     }
@@ -78,15 +96,21 @@ public class ObjectManipulation : MonoBehaviour {
     }
 
     public void LoadModel() {
-
-        if(this.gameObject.transform.childCount > 0){ 
+        foreach(var ob in AllModels) {
+            ob.SetActive(false);
+        }
+        AllModels[modelIndex].SetActive(true);
+        /*if(this.gameObject.transform.childCount > 0){ 
             Destroy(this.gameObject.transform.GetChild(0).gameObject);
         }
 
         if(modelIndex >= 0) {
-            GameObject o = Instantiate(AllModels[modelIndex], new Vector3(0f, this.transform.position.y, 0f), Quaternion.identity) as GameObject;
+            GameObject o = Instantiate(AllModels[modelIndex], new Vector3(0f, (modelIndex == 0) ? this.transform.position.y-8.5f:this.transform.position.y, 0f), Quaternion.identity) as GameObject;
             o.transform.parent = this.gameObject.transform;
-        }
+            if(modelIndex == 0) {
+                AnaAnimator = o.GetComponent<Animator>();
+            }
+        }*/
         //show nothing otherwise
         Show();
     }

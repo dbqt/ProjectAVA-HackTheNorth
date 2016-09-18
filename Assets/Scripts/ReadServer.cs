@@ -10,19 +10,22 @@ public class ReadServer : MonoBehaviour {
 
 	private float internalZoom;
 	private string lastCommand;
+	private string lastExpression;
 	int counter = 0;
 
 	// Use this for initialization
 	void Start () {
 		internalZoom = 0f;
+		lastExpression = "";
 		lastCommand = "";
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(counter >= 200){
+		if(counter >= 30){
 			StartCoroutine("ReadPi");
 			StartCoroutine("ReadVoice");
+			StartCoroutine("ReadExpression");
 
 			if(internalZoom == 0f) {
 			this.GetComponent<ObjectManipulation>().SetZoom(0.75f);
@@ -66,31 +69,46 @@ public class ReadServer : MonoBehaviour {
 
 	}
 
-	private void ExecuteCommand(string command) {
+	IEnumerator ReadExpression() {
+		 WWW exp = new WWW("https://projectava-1de83.firebaseio.com/expression.json");
+		 yield return exp;
+		 Debug.Log("RV exp: " + exp.text);
+		 if(lastExpression != exp.text){
+		 	Debug.Log("last exp not equal to exp text");
+		 	lastExpression = exp.text;
+			ExecuteExpression(exp.text);
+		 } 
+		 
+		//ExecuteExpression(exp.text); 
+	}
 
-			Debug.Log("EC new command "+ command);
-			//new command
-			if(command.ToLower().Contains("weather")){
-				if(command.ToLower().Contains("sun") || command.ToLower().Contains("clear")) {
-		            //sun
-		            this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(1);
-			    }
-			    else if(command.ToLower().Contains("cloud")) {
-		            //cloud
-		            this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(2);
-			    }
-			    else {
-		            //rain
-		            this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(3);
-	       		}
-			}
-			else if(command.ToLower() == "time") {
-				this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(-1);
-				//show time
-			}
-			else {
-				this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(0);
-			}
-		
+	private void ExecuteExpression(string expression) {
+		this.gameObject.GetComponent<ObjectManipulation>().SetAnaAnimation(expression.ToLower());
+	}
+
+	private void ExecuteCommand(string command) {
+		Debug.Log("EC new command "+ command);
+		//new command
+		if(command.ToLower().Contains("weather")){
+			if(command.ToLower().Contains("sun") || command.ToLower().Contains("clear")) {
+	            //sun
+	            this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(1);
+		    }
+		    else if(command.ToLower().Contains("cloud")) {
+	            //cloud
+	            this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(2);
+		    }
+		    else {
+	            //rain
+	            this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(3);
+       		}
+		}
+		else if(command.ToLower() == "time") {
+			this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(-1);
+			//show time
+		}
+		else {
+			this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(0);
+		}	
 	}
 }
