@@ -66,6 +66,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013917071790}
+  - 95: {fileID: 95000011268211928}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -519,3 +520,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011042184048}
   m_Mesh: {fileID: 4300000, guid: 4297585c5390f8a4f8684fdfa5c556a8, type: 3}
+--- !u!95 &95000011268211928
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011514588584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5404d6b37f9dc8444a562be4d94fac43, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
