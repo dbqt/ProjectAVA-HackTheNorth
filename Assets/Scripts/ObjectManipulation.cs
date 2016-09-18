@@ -58,36 +58,32 @@ public class ObjectManipulation : MonoBehaviour {
 
     public void SetAnaAnimation(string trigger) {
         Debug.Log("set animation " + trigger);
-        switch (trigger) {
-            case "greet":
+        
+            if(trigger.Equals("greet")){
             Debug.Log("case greet");
                 AnaAnimator.SetTrigger("GreetTrigger");
-                break;
-            case "talk":
+            }
+            if(trigger.Equals( "talk")){
             Debug.Log("case talk");
                 AnaAnimator.SetTrigger("TalkTrigger");
-                break;
-            case "idle":
+                }
+            if(trigger.Equals( "idle")){
                 //MainAnimator.SetTrigger("GreetTrigger");
-                break;
-            case "search":
+                }
+            if(trigger.Equals( "search")){
             Debug.Log("case search");
                 AnaAnimator.SetTrigger("SearchTrigger");
-                break;
-            case "dance":
+                }
+            if(trigger.Equals( "dance")){
             Debug.Log("case dance");
                 //MainAnimator.SetTrigger("HideTrigger");
                 AnaAnimator.SetTrigger("DanceTrigger");
-                break;
-            case "no":
+                }
+            if(trigger.Equals( "no")){
             Debug.Log("case no");
                 AnaAnimator.SetTrigger("NoTrigger");
-                break;
-
-            default:
-                //MainAnimator.SetTrigger("IdleTrigger");
-                break;
-        }
+                }
+        
     }
 
     public void ChangeModel(int newModelIndex) {

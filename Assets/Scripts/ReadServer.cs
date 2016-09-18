@@ -103,8 +103,9 @@ public class ReadServer : MonoBehaviour {
 	            this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(3);
        		}
 		}
-		else if(command.ToLower() == "time") {
-			this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(-1);
+		else if(command.ToLower().Contains("time")) {
+			Debug.Log("time????");
+			this.gameObject.GetComponent<ObjectManipulation>().ChangeModel(4);
 			//show time
 		}
 		else {
