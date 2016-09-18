@@ -83,7 +83,7 @@ public class ReadServer : MonoBehaviour {
 	}
 
 	private void ExecuteExpression(string expression) {
-		this.gameObject.GetComponent<ObjectManipulation>().SetAnaAnimation(expression.ToLower());
+		this.gameObject.GetComponent<ObjectManipulation>().SetAnaAnimation(expression.ToString());
 	}
 
 	private void ExecuteCommand(string command) {

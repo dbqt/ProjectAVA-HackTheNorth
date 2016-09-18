@@ -1332,7 +1332,7 @@ MonoBehaviour:
   RotationSpeed: 100
   DebugValue: 1
   MainAnimator: {fileID: 1933966716}
-  AnaAnimator: {fileID: 0}
+  AnaAnimator: {fileID: 49148191}
   AllModels:
   - {fileID: 49148189}
   - {fileID: 377633069}

@@ -58,31 +58,32 @@ public class ObjectManipulation : MonoBehaviour {
 
     public void SetAnaAnimation(string trigger) {
         Debug.Log("set animation " + trigger);
+        string newtrigger = trigger.ToLower();
         
-            if(trigger.Equals("greet")){
+        if(newtrigger.Contains("greet")){
             Debug.Log("case greet");
-                AnaAnimator.SetTrigger("GreetTrigger");
-            }
-            if(trigger.Equals( "talk")){
+            AnaAnimator.SetTrigger("GreetTrigger");
+        }
+        if(newtrigger.Contains( "talk")){
             Debug.Log("case talk");
-                AnaAnimator.SetTrigger("TalkTrigger");
-                }
-            if(trigger.Equals( "idle")){
-                //MainAnimator.SetTrigger("GreetTrigger");
-                }
-            if(trigger.Equals( "search")){
+            AnaAnimator.SetTrigger("TalkTrigger");
+        }
+        if(newtrigger.Contains( "idle")){
+        //MainAnimator.SetTrigger("GreetTrigger");
+        }
+        if(newtrigger.Contains( "search")){
             Debug.Log("case search");
-                AnaAnimator.SetTrigger("SearchTrigger");
-                }
-            if(trigger.Equals( "dance")){
+            AnaAnimator.SetTrigger("SearchTrigger");
+        }
+        if(newtrigger.Contains("dance")){
             Debug.Log("case dance");
-                //MainAnimator.SetTrigger("HideTrigger");
-                AnaAnimator.SetTrigger("DanceTrigger");
-                }
-            if(trigger.Equals( "no")){
+            //MainAnimator.SetTrigger("HideTrigger");
+            AnaAnimator.SetTrigger("DanceTrigger");
+        }
+        if(newtrigger.Contains( "no")){
             Debug.Log("case no");
-                AnaAnimator.SetTrigger("NoTrigger");
-                }
+            AnaAnimator.SetTrigger("NoTrigger");
+        }
         
     }
 
